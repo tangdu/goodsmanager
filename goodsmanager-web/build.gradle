@@ -1,0 +1,42 @@
+group 'com.xnh.goodsmanager'
+version '1.0'
+
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+//Java 文档打包任务
+task webdoc (type:Javadoc) {
+    //classifier = "javadoc"
+    source = sourceSets.main.allJava
+    //javadoc.include("**/**Controller.java")
+    //from javadoc.destinationDir
+}
+
+
+dependencies {
+    compile("com.xnh.goodscenter:goodscenter-facade:1.0.0")
+
+    compile("org.springframework.boot:spring-boot-starter-tomcat")
+    compile("org.springframework.boot:spring-boot-starter-aop")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-redis")
+    compile(
+            project(":goodsmanager-intergration"),
+            "com.google.guava:guava:${guava_version}",
+            "com.alibaba:fastjson:${fastjson_version}",
+            "joda-time:joda-time:${joda_version}"
+    )
+    compile( "com.alibaba:dubbo:${dubbo_version}"){
+        exclude(group:"org.springframework")
+    }
+    compile( "org.apache.zookeeper:zookeeper:${zookeeper_version}"){
+        exclude(group:"org.slf4j")
+    }
+    compile("com.101tec:zkclient:0.10"){
+        exclude(group:"org.slf4j")
+    }
+    compile("org.springframework.boot:spring-boot-starter-test")
+    compile("commons-io:commons-io:${common_io_version}")
+
+}

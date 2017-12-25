@@ -1,0 +1,69 @@
+apply plugin: "java"
+apply plugin: "eclipse"
+
+group 'com.xnh'
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springboot_version}"
+	}
+}
+
+subprojects{
+	apply plugin: "java"
+	apply plugin: "eclipse"
+	apply plugin: 'org.springframework.boot'
+
+	group 'com.xnh'
+	version '1.0'
+
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+
+	repositories {
+		maven { url MAVEN_RELEASE_REPOURL }
+		mavenCentral()
+		//jcenter()
+	}
+
+	configurations {
+		//compile.exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
+		compile.exclude group: "log4j"
+	}
+
+	dependencies {
+		compile(
+				"org.projectlombok:lombok:${lombok_version}"
+		)
+		testCompile(
+				"junit:junit:${junit_version}",
+		)
+	}
+
+	//源代码打包任务
+	task sourceJar (type : Jar) {
+		classifier = "sources"
+		from sourceSets.main.allSource
+	}
+
+	//Java 文档打包任务
+	task javadocJar (type: Jar, dependsOn: javadoc) {
+		classifier = "javadoc"
+		from javadoc.destinationDir
+	}
+
+
+	artifacts {
+		archives sourceJar
+	}
+
+	eclipse{
+		jdt{
+			sourceCompatibility = 1.8
+			targetCompatibility = 1.8
+		}
+	}
+}

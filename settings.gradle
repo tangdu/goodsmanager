@@ -1,0 +1,3 @@
+include 'goodsmanager-web'
+include 'goodsmanager-intergration'
+

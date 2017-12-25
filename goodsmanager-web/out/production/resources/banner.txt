@@ -1,0 +1,37 @@
+ ${AnsiColor.GREEN}
+                                                      ,-.
+                                                  ,--/ /|
+              ,---,          ,--,          ,--, ,--. :/ |
+          ,-+-. /  |       ,'_ /|        ,'_ /| :  : ' /
+         ,--.'|'   |  .--. |  | :   .--. |  | : |  '  /
+        |   |  ,"' |,'_ /| :  . | ,'_ /| :  . | '  |  :
+        |   | /  | ||  ' | |  . . |  ' | |  . . |  |   \
+        |   | |  | ||  | ' |  | | |  | ' |  | | '  : |. \
+        |   | |  |/ :  | : ;  ; | :  | : ;  ; | |  | ' \ \
+        |   | |--'  '  :  `--'   \'  :  `--'   \'  : |--'
+        |   |/      :  ,      .-./:  ,      .-./;  |,'
+        '---'        `--`----'     `--`----'    '--'
+ ${AnsiColor.DEFAULT}
+
+********************************************************************
+    Application   ${spring.application.name}
+    SpringBoot    ${spring-boot.version}
+********************************************************************
+
+System.properties:
+--------------------------------------------------------------------
+    java.home                     = ${java.home}
+    java.version                  = ${java.version}
+    java.vendor                   = ${java.vendor}
+    java.class.version            = ${java.class.version}
+    java.class.path               = ${java.class.path}
+    java.library.path             = ${java.library.path}
+    java.io.tmpdir                = ${java.io.tmpdir}
+    java.compiler                 = ${java.compiler}
+    java.ext.dirs                 = ${java.ext.dirs}
+    os.name                       = ${os.name}
+    os.arch                       = ${os.arch}
+    os.version                    = ${os.version}
+    user.name                     = ${user.name}
+    user.dir                      = ${user.dir}
+---------------------------------------------------------------------

@@ -1,0 +1,9 @@
+group 'com.xnh'
+
+apply plugin: 'java'
+
+
+dependencies {
+    compile("com.xnh.goodscenter:goodscenter-facade:1.0.0")
+    compile("org.springframework.boot:spring-boot-starter")
+}
