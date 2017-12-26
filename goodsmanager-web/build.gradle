@@ -15,12 +15,10 @@ task webdoc (type:Javadoc) {
 
 
 dependencies {
-    compile("com.xnh.goodscenter:goodscenter-facade:1.0.0")
-
     compile("org.springframework.boot:spring-boot-starter-tomcat")
     compile("org.springframework.boot:spring-boot-starter-aop")
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-data-redis")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
     compile(
             project(":goodsmanager-intergration"),
             "com.google.guava:guava:${guava_version}",

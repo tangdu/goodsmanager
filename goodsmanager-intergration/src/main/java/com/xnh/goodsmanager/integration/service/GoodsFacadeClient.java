@@ -27,7 +27,7 @@ public class GoodsFacadeClient {
         long start = System.currentTimeMillis();
         Result<GoodsRO> roResult = null;
         try {
-            roResult = goodsFacade.queryGoodsList(goodsQueryRO);
+            roResult = goodsFacade.queryGoodsById(1l);
             if (roResult.isSuccess()) {
                 return roResult.getData();
             }
