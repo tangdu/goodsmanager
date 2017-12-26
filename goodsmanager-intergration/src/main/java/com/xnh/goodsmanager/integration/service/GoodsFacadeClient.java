@@ -23,7 +23,7 @@ public class GoodsFacadeClient {
     @Autowired
     private GoodsFacade goodsFacade;
 
-    public GoodsRO queryGoodsList(GoodsQueryRO goodsQueryRO) {
+    public GoodsRO queryGoodsById(GoodsQueryRO goodsQueryRO) {
         long start = System.currentTimeMillis();
         Result<GoodsRO> roResult = null;
         try {
