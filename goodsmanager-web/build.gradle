@@ -1,29 +1,60 @@
-group 'com.xnh.goodsmanager'
-version '1.0'
+group 'cn.xnh.goodsmanager'
+version '1.0.0'
 
 
-apply plugin: 'java'
-apply plugin: 'war'
+apply plugin: 'maven'
 
-//Java 文档打包任务
-task webdoc (type:Javadoc) {
-    //classifier = "javadoc"
-    source = sourceSets.main.allJava
-    //javadoc.include("**/**Controller.java")
-    //from javadoc.destinationDir
+
+javadoc {
+    options{
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+        links "http://docs.oracle.com/javase/7/docs/api"
+        title "Java"
+    }
+    include("**/**/*Controller.java","**/**/*VO.java")
 }
 
+jar {
+    manifest {
+        attributes(
+                "Manifest-Version": "1.0",
+                "Created-By": "Gradle",
+                "Build-Jdk": "${sourceCompatibility}",
+                "Implementation-Title": project.name,
+                "Implementation-Version": version
+        )
+    }
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: MAVEN_RELEASE_REPOURL) {
+                authentication(userName: "xnh", password: "xnh123")
+            }
+            pom.project {
+                groupId project.group
+                artifactId project.name
+                version project.version
+            }
+        }
+    }
+}
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-tomcat")
     compile("org.springframework.boot:spring-boot-starter-aop")
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-data-redis")
     compile(
             project(":goodsmanager-intergration"),
             "com.google.guava:guava:${guava_version}",
             "com.alibaba:fastjson:${fastjson_version}",
-            "joda-time:joda-time:${joda_version}"
+            "joda-time:joda-time:${joda_version}",
+            "cn.luban:luban-plugin:${luban_plugin_version}",
     )
     compile( "com.alibaba:dubbo:${dubbo_version}"){
         exclude(group:"org.springframework")

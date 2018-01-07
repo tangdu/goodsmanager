@@ -7,6 +7,6 @@
 
 	<dubbo:application name="${spring.application.name}" owner="platform" />
 	<dubbo:registry protocol="zookeeper" address="${spring.dubbo.registry.address}" timeout="${spring.dubbo.registry.timeout}" />
-	<dubbo:protocol name="${spring.dubbo.protocol.name}" port="${spring.dubbo.protocol.port}" threadpool="cached" threads="${spring.dubbo.protocol.threads}"/>
+	<dubbo:protocol name="dubbo" port="${spring.dubbo.protocol.port}" />
 	<!--<dubbo:monitor protocol="registry"/>-->
 </beans>

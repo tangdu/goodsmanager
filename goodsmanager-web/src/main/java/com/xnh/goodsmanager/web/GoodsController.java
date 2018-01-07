@@ -1,8 +1,13 @@
 package com.xnh.goodsmanager.web;
 
+import cn.luban.commons.object.ObjectUtils;
+import cn.luban.commons.web.ApiResult;
+import cn.luban.commons.web.ApiResults;
 import com.xnh.goodscenter.facade.ro.GoodsQueryRO;
 import com.xnh.goodscenter.facade.ro.GoodsRO;
 import com.xnh.goodsmanager.integration.service.GoodsFacadeClient;
+import com.xnh.goodsmanager.web.vo.GoodsQueryVO;
+import com.xnh.goodsmanager.web.vo.GoodsVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +37,19 @@ public class GoodsController {
      */
     @GetMapping("/queryGoodsById")
     @ResponseBody
-    public GoodsRO queryGoodsById(GoodsQueryRO goodsQueryRO) {
-        GoodsRO goodsRO = null;
+    public ApiResult<GoodsVO> queryGoodsById(GoodsQueryVO goodsQueryRO) {
+        ApiResult<GoodsVO> result = null;
         try {
-            goodsRO = goodsFacadeClient.queryGoodsById(goodsQueryRO);
+            GoodsQueryRO queryRO = ObjectUtils.copy(goodsQueryRO, GoodsQueryRO.class);
+            GoodsRO goodsRO = goodsFacadeClient.queryGoodsById(queryRO);
+            if(goodsRO!=null){
+                GoodsVO goodsVO=ObjectUtils.copy(goodsRO,GoodsVO.class);
+                result=ApiResults.success(goodsVO);
+            }
         } catch (Exception e) {
             LOGGER.error("queryGoodsById",e);
+            result= ApiResults.failed("查询失败");
         }
-        return goodsRO;
+        return result;
     }
 }

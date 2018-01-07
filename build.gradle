@@ -14,11 +14,7 @@ buildscript {
 
 subprojects{
 	apply plugin: "java"
-	apply plugin: "eclipse"
 	apply plugin: 'org.springframework.boot'
-
-	group 'com.xnh.goodsmanager'
-	version '1.0'
 
 	sourceCompatibility = 1.8
 	targetCompatibility = 1.8
@@ -58,12 +54,5 @@ subprojects{
 
 	artifacts {
 		archives sourceJar
-	}
-
-	eclipse{
-		jdt{
-			sourceCompatibility = 1.8
-			targetCompatibility = 1.8
-		}
 	}
 }

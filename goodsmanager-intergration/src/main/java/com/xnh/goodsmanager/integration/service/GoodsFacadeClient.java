@@ -1,6 +1,6 @@
 package com.xnh.goodsmanager.integration.service;
 
-import com.xnh.commons.knife.result.Result;
+import cn.luban.commons.result.Result;
 import com.xnh.goodscenter.facade.ro.GoodsQueryRO;
 import com.xnh.goodscenter.facade.ro.GoodsRO;
 import com.xnh.goodscenter.facade.service.GoodsFacade;
