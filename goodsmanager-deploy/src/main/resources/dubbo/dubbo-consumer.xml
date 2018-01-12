@@ -14,5 +14,8 @@
     <dubbo:reference id="goodsFacade"
                      interface="com.xnh.goodscenter.facade.service.GoodsFacade"
                      version="1.0.0" check ="false" timeout="3000"/>
+ <dubbo:reference id="userFacade"
+                     interface="cn.xnh.datacenter.user.facade.service.UserFacade"
+                     version="1.0.0" check ="false" timeout="3000"/>
 
 </beans>
